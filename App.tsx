@@ -341,6 +341,21 @@ export default function App() {
                 />
               </div>
             </div>
+
+            {/* Footer */}
+            <footer className="mt-12 pb-6 text-center">
+              <p className="text-sm text-white/40">
+                Made by{' '}
+                <a 
+                  href="https://x.com/JoshuaIPark" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-white/60 hover:text-white transition-colors underline"
+                >
+                  @JoshuaIPark
+                </a>
+              </p>
+            </footer>
           </div>
         </div>
       )}
