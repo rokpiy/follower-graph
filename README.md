@@ -2,6 +2,14 @@
 
 A clean and interactive web application to visualize and manage your Twitter follower growth data.
 
+## Screenshots
+
+### Welcome Screen
+![Welcome Screen](public/screenshot_welcom.png)
+
+### Dashboard
+![Dashboard](public/screenshot_home.png)
+
 ## Features
 
 - 📊 **Interactive Charts**: Visualize follower growth with dual-axis charts showing new followers, unfollows, and total count
