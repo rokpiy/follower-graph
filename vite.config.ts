@@ -12,5 +12,18 @@ export default defineConfig({
         alias: {
           '@': path.resolve(__dirname, '.'),
         }
-      }
+      },
+      build: {
+        rollupOptions: {
+          output: {
+            manualChunks: {
+              'react-vendor': ['react', 'react-dom'],
+              'chart-vendor': ['recharts'],
+              'ui-vendor': ['@radix-ui/react-popover', '@radix-ui/react-slot'],
+              'date-vendor': ['date-fns', 'react-day-picker'],
+            },
+          },
+        },
+        chunkSizeWarningLimit: 600,
+      },
 });
