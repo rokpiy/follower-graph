@@ -11,6 +11,8 @@ import { Calendar } from './components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from './components/ui/popover';
 import { cn } from './lib/utils';
 import { parseTwitterAnalyticsCSV } from './lib/csvParser';
+import { Analytics } from "@vercel/analytics/react"
+
 
 const INITIAL_CONFIG: GrowthConfig = {
   startDate: '',
@@ -359,6 +361,7 @@ export default function App() {
           </div>
         </div>
       )}
+      <Analytics />
     </div>
   );
 }
