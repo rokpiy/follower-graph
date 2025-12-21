@@ -1,0 +1,5 @@
+{
+  "name": "Twitter Growth Tracker",
+  "description": "Visualize and edit daily Twitter follower growth data with interactive charts and date filtering.",
+  "requestFramePermissions": []
+}
