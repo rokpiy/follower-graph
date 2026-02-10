@@ -9,7 +9,7 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  ReferenceLine
+  ReferenceLine,
 } from 'recharts';
 import { DailyStat } from '../types';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
@@ -19,10 +19,15 @@ interface FollowerChartProps {
   height?: string;
 }
 
-export const FollowerChart: React.FC<FollowerChartProps> = ({ data, height = "h-[380px]" }) => {
-  const chartData = data.map(d => ({
+import { CustomTooltip } from './CustomTooltip';
+
+export const FollowerChart: React.FC<FollowerChartProps> = ({
+  data,
+  height = 'h-[380px]',
+}) => {
+  const chartData = data.map((d) => ({
     ...d,
-    unfollowsDisplay: -Math.abs(d.unfollows)
+    unfollowsDisplay: -Math.abs(d.unfollows),
   }));
 
   return (
@@ -44,7 +49,11 @@ export const FollowerChart: React.FC<FollowerChartProps> = ({ data, height = "h-
               stackOffset="sign"
               barCategoryGap="20%"
             >
-              <CartesianGrid stroke="rgba(255,255,255,0.1)" strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid
+                stroke="rgba(255,255,255,0.1)"
+                strokeDasharray="3 3"
+                vertical={false}
+              />
 
               <XAxis
                 dataKey="date"
@@ -61,7 +70,12 @@ export const FollowerChart: React.FC<FollowerChartProps> = ({ data, height = "h-
                 yAxisId="left"
                 stroke="rgba(255,255,255,0.6)"
                 tick={{ fill: 'rgba(255,255,255,0.6)', fontSize: 12 }}
-                label={{ value: 'Total', angle: -90, position: 'insideLeft', fill: 'rgba(255,255,255,0.6)' }}
+                label={{
+                  value: 'Total',
+                  angle: -90,
+                  position: 'insideLeft',
+                  fill: 'rgba(255,255,255,0.6)',
+                }}
               />
 
               <YAxis
@@ -69,24 +83,16 @@ export const FollowerChart: React.FC<FollowerChartProps> = ({ data, height = "h-
                 orientation="right"
                 stroke="rgba(255,255,255,0.6)"
                 tick={{ fill: 'rgba(255,255,255,0.6)', fontSize: 12 }}
-                label={{ value: 'Daily', angle: 90, position: 'insideRight', fill: 'rgba(255,255,255,0.6)' }}
+                label={{
+                  value: 'Daily',
+                  angle: 90,
+                  position: 'insideRight',
+                  fill: 'rgba(255,255,255,0.6)',
+                }}
               />
 
-              <Tooltip
-                contentStyle={{ 
-                  backgroundColor: '#000', 
-                  borderColor: 'rgba(255,255,255,0.2)', 
-                  color: '#fff',
-                  borderRadius: '8px'
-                }}
-                itemStyle={{ color: '#fff' }}
-                labelStyle={{ color: 'rgba(255,255,255,0.6)' }}
-                formatter={(value: number, name: string) => {
-                  if (name === 'Unfollowers') return [Math.abs(value), name];
-                  return [value, name];
-                }}
-              />
-              
+              <Tooltip content={<CustomTooltip />} />
+
               <Legend
                 verticalAlign="top"
                 height={36}
@@ -107,8 +113,12 @@ export const FollowerChart: React.FC<FollowerChartProps> = ({ data, height = "h-
                   </div>
                 }
               />
-              
-              <ReferenceLine y={0} yAxisId="right" stroke="rgba(255,255,255,0.2)" />
+
+              <ReferenceLine
+                y={0}
+                yAxisId="right"
+                stroke="rgba(255,255,255,0.2)"
+              />
 
               <Bar
                 yAxisId="right"
